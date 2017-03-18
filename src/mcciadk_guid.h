@@ -1,4 +1,4 @@
-/* mcciadk_guid.h	Mon Oct 17 2016 00:54:02 tmm */
+/* mcciadk_guid.h	Sat Mar 18 2017 01:36:16 tmm */
 
 /*
 
@@ -8,10 +8,10 @@ Function:
 	MCCIADK_GUID and so forth.
 
 Version:
-	V0.1.0	Mon Oct 17 2016 00:54:02 tmm	Edit level 1
+	V0.1.1	Sat Mar 18 2017 01:36:16 tmm	Edit level 2
 
 Copyright notice:
-	This file copyright (C) 2016 by
+	This file copyright (C) 2016-2017 by
 
 		MCCI Corporation
 		3520 Krums Corners Road
@@ -29,6 +29,9 @@ Revision history:
    0.1.0  Mon Oct 17 2016 00:54:02  tmm
 	Module created.
 
+   0.1.1  Sat Mar 18 2017 01:36:16  tmm
+	Need to make this c++ safe.
+
 */
 
 #ifndef _MCCIADK_GUID_H_		/* prevent multiple includes */
@@ -39,6 +42,9 @@ Revision history:
 #endif
 
 #include <stdint.h>
+#include <stddef.h>
+
+MCCIADK_BEGIN_DECLS
 
 typedef struct MCCIADK_GUID_s
 	{
@@ -118,6 +124,8 @@ MCCIADK_C_ASSERT(sizeof(MCCIADK_GUID_WIRE) == MCCIADK_GUID_WIRE__SIZE);
 
 #define	MCCIADK_GUID_GEN_INIT(f, t1, t2, t3, c1, c2, n1, n2, n3, n4, n5, n6) \
 	MCCIADK_GUID_##f##_INIT(t1, t2, t3, c1, c2, n1, n2, n3, n4, n5, n6)
+
+MCCIADK_END_DECLS
 
 /**** end of mcciadk_guid.h ****/
 #endif /* _MCCIADK_GUID_H_ */
