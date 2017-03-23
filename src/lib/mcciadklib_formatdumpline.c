@@ -78,7 +78,7 @@ McciAdkLib_FormatDumpLine(
 			"%08x ", uAddress
 			);
 
-	textrep[17] = '\0';
+	textrep[sizeof(textrep) - 1] = '\0';
 
 	for (unsigned j = 0; j < 16; ++j)
 		{

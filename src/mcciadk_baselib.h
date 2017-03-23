@@ -125,7 +125,7 @@ McciAdkLib_CharToLower(
 		return c;
 	}
 
-static size_t
+size_t
 McciAdkLib_FormatDumpLine(
 	char *pLine,
 	size_t nLine,
