@@ -93,14 +93,6 @@ McciAdkLib_FormatDumpLine(
 					c
 					);
 
-			if (j == 7)
-				{
-				iLine += McciAdkLib_Snprintf(
-					pLine, nLine, iLine,
-					" "
-					);
-				}
-
 			if (! McciAdkLib_CharIsPrint(c))
 				c = '.';
 
@@ -113,6 +105,15 @@ McciAdkLib_FormatDumpLine(
 					"   "
 					);
 			textrep[j] = '\0';
+			}
+
+                // put the space between the groups of 8.
+		if (j == 7)
+			{
+			iLine += McciAdkLib_Snprintf(
+				pLine, nLine, iLine,
+				" "
+				);
 			}
 		}
 
