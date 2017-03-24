@@ -84,7 +84,7 @@ McciAdkLib_FormatDumpLine(
 		{
 		if (j < nBuffer)
 			{
-			int8_t c;
+			uint8_t c;
 
 			c = pBuffer[j];
 			iLine += McciAdkLib_Snprintf(
