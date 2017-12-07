@@ -1,4 +1,4 @@
-/* mcciadk_baselib.h	Tue Oct 25 2016 08:49:01 tmm */
+/* mcciadk_baselib.h	Thu Dec 07 2017 00:46:58 tmm */
 
 /*
 
@@ -8,10 +8,10 @@ Function:
 	The basic ADK library.
 
 Version:
-	V0.1.0	Tue Oct 25 2016 08:49:01 tmm	Edit level 1
+	V0.1.2	Thu Dec 07 2017 00:46:58 tmm	Edit level 1
 
 Copyright notice:
-	This file copyright (C) 2016 by
+	This file copyright (C) 2016-2017 by
 
 		MCCI Corporation
 		3520 Krums Corners Road
@@ -28,6 +28,9 @@ Author:
 Revision history:
    0.1.0  Tue Oct 25 2016 08:49:01  tmm
 	Module created.
+
+   0.1.2  Thu Dec 07 2017 00:46:58  tmm
+        Added McciAdkLib_StringCompareCaseInsensitive().
 
 */
 
@@ -124,6 +127,13 @@ McciAdkLib_CharToLower(
 	else
 		return c;
 	}
+
+// compare strings, case-insensitive
+int
+McciAdkLib_StringCompareCaseInsensitive(
+        const char *pLeft,
+        const char *pRight
+        );
 
 size_t
 McciAdkLib_FormatDumpLine(
