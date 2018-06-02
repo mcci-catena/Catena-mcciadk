@@ -72,6 +72,8 @@ McciAdkLib_StringCompareCaseInsensitive(
 
         for (;; ++pLeft, ++pRight)
                 {
+                int cLeft, cRight;
+
                 cLeft = *pLeft;
                 cRight = *pRight;
 
