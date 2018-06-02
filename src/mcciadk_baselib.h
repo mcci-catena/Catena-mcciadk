@@ -57,7 +57,7 @@ McciAdkLib_BufferToUlong(
 	bool *pfOverflow
 	);
 
-static size_t
+static inline size_t
 McciAdkLib_BufferToUint32(
 	const char *s,
 	size_t n,
