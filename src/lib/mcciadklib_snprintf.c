@@ -32,6 +32,8 @@ Revision history:
 */
 
 #include "mcciadk_baselib.h"
+
+#include <stdio.h>
 
 /****************************************************************************\
 |
