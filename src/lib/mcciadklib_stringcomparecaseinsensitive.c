@@ -64,8 +64,6 @@ McciAdkLib_StringCompareCaseInsensitive(
         const char *pRight
         )
         {
-        int cLeft, cRight;
-
         if (pLeft == NULL)
                 return pRight ? 0 : -1;
 
@@ -74,8 +72,6 @@ McciAdkLib_StringCompareCaseInsensitive(
 
         for (;; ++pLeft, ++pRight)
                 {
-                int cLeft, cRight;
-
                 cLeft = *pLeft;
                 cRight = *pRight;
 
