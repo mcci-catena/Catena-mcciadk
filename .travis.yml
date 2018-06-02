@@ -45,11 +45,11 @@ before_install:
 
 install:
  - for i in $REQLIBS ; do echo $i ; git clone --depth=1 https://github.com/mcci-catena/${i}.git $LIBPATH/$i || break ; done
+ - export UNIT_HDR_BASE=$(_maketestheader headertest_base.ino mcciadk_baselib.h ) ; echo UNIT_HDR_BASE - $UNIT_HDR_BASE ; cat $UNIT_HDR_BASE
+ - export UINT_HDR_ENV=$(_maketestheader headertest_env.ino mcciadk_env.h ) ; echo UNIT_HDR_ENV - $UNIT_HDR_ENV ; cat $UNIT_HDR_ENV
+ - export UINT_HDR_GUID=$(_maketestheader headertest_guid.ino mcciadk_guid.h ) ; echo UNIT_HDR_GUID - $UNIT_HDR_GUID ; cat $UNIT_HDR_GUID
  - arduino --install-boards mcci:samd
 # - arduino --install-boards mcci:stm32
- - export UNIT_HDR_BASE=$(_maketestheader headertest_base.ino mcciadk_baselib.h )
- - export UINT_HDR_ENV=$(_maketestheader headertest_base.ino mcciadk_env.h )
- - export UINT_HDR_GUID=$(_maketestheader headertest_base.ino mcciadk_guid.h )
 
 script:
 #
