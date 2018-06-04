@@ -1,5 +1,3 @@
-/* mcciadk_baselib.h	Thu Dec 07 2017 00:46:58 tmm */
-
 /*
 
 Module:  mcciadk_baselib.h
@@ -7,30 +5,11 @@ Module:  mcciadk_baselib.h
 Function:
 	The basic ADK library.
 
-Version:
-	V0.1.2	Thu Dec 07 2017 00:46:58 tmm	Edit level 1
-
 Copyright notice:
-	This file copyright (C) 2016-2017 by
+        See accompanying LICENSE file.
 
-		MCCI Corporation
-		3520 Krums Corners Road
-		Ithaca, NY  14850
-
-	An unpublished work.  All rights reserved.
-	
-	This file is proprietary information, and may not be disclosed or
-	copied without the prior permission of MCCI Corporation.
- 
 Author:
 	Terry Moore, MCCI Corporation	October 2016
-
-Revision history:
-   0.1.0  Tue Oct 25 2016 08:49:01  tmm
-	Module created.
-
-   0.1.2  Thu Dec 07 2017 00:46:58  tmm
-        Added McciAdkLib_StringCompareCaseInsensitive().
 
 */
 
@@ -115,7 +94,7 @@ McciAdkLib_CharIsWhite(
 	return ((c & 0xFF) <= 0x20);
 	}
 
-// if c is an upper case letter, return the lower-case equivalent; 
+// if c is an upper case letter, return the lower-case equivalent;
 // otherwise return c unchanged.
 static inline char
 McciAdkLib_CharToLower(
@@ -127,6 +106,14 @@ McciAdkLib_CharToLower(
 	else
 		return c;
 	}
+
+size_t
+McciAdkLib_SafeCopyString(
+	char *pBuffer,
+	size_t nBuffer,
+	size_t iBuffer,
+	const char *pString
+	);
 
 // compare strings, case-insensitive
 int
