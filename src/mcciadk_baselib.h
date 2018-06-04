@@ -128,6 +128,14 @@ McciAdkLib_CharToLower(
 		return c;
 	}
 
+size_t
+McciAdkLib_SafeCopyString(
+	char *pBuffer,
+	size_t nBuffer,
+	size_t iBuffer,
+	const char *pString
+	);
+
 // compare strings, case-insensitive
 int
 McciAdkLib_StringCompareCaseInsensitive(
