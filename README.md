@@ -2,7 +2,7 @@
 
 This repository contains the MCCI&reg; ADK, a version of the MCCI XDK adapted for use on Catena&reg;-like Arduinos by [MCCI Corporation](http://www.mcci.com).
 
-[![GitHub release](https://img.shields.io/github/release/mcci-catena/Catena-mcciadk.svg)](https://github.com/mcci-catena/arduino-lorawan/releases/latest) [![GitHub commits](https://img.shields.io/github/commits-since/mcci-catena/Catena-mcciadk/latest.svg)](https://github.com/mcci-catena/Catena-mcciadk/compare/v0.1.3...master)
+[![GitHub release](https://img.shields.io/github/release/mcci-catena/Catena-mcciadk.svg)](https://github.com/mcci-catena/arduino-lorawan/releases/latest) [![GitHub commits](https://img.shields.io/github/commits-since/mcci-catena/Catena-mcciadk/latest.svg)](https://github.com/mcci-catena/Catena-mcciadk/compare/v0.1.4...master)
 [![Build Status](https://travis-ci.com/mcci-catena/Catena-mcciadk.svg?branch=master)](https://travis-ci.com/mcci-catena/Catena-mcciadk)
 
 **Contents**
@@ -136,6 +136,8 @@ This header file provides a number of portable APIs for use by ADK clients.
    3. They allow you to easily index into the output buffer.
 
 ## Release History
+
+- v0.1.4 is a minor release. It adds `McciAdkLib_SafeCopyString()` (issue [#8](https://github.com/mcci-catena/Catena-mcciadk/issues/8)). Fixed a bug due to use of dot_a_linkage (issue [#10](https://github.com/mcci-catena/Catena-mcciadk/issues/10)). CI testing was extended to the MCCI STM32-based board support package (v2.0.0 or later).
 
 - v0.1.3 adds documentation, continuous integration with Travis CI, and fixes some compile warnings.
 
