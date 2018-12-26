@@ -26,6 +26,7 @@ This repository contains the MCCI&reg; ADK, a version of the MCCI XDK adapted fo
 	- [Support Open Source Hardware](#support-open-source-hardware)
 
 <!-- /TOC -->
+
 ## Introduction
 
 MCCI uses its XDK (cross-platform development kit) for writing portable code for use across development environments, compilers and operating systems. Although we don't think it's really appropriate for Arduino work, we find some of its idioms extremely useful, along with some of the functions.
@@ -113,16 +114,16 @@ This header file provides a number of portable APIs for use by ADK clients.
 
 - `McciAdkLib_CharIsLower()`, `McciAdkLib_CharIsPrint()`, `McciAdkLib_CharIsUpper()`, `McciAdkLib_CharIsWhite()`, and `McciAdkLib_CharToLower()` duplicate some of the functions of `<ctype.h>`. They're justified because they avoid Unicode and other portability distractions in embedded systems with small memory.
 
-- `McciAdkLib_StringCompareCaseInsensitive()` compares two ASCII strings without considering case, and also without internationalization considerations. 
+- `McciAdkLib_StringCompareCaseInsensitive()` compares two ASCII strings without considering case, and also without internationalization considerations.
 
 - `McciAdkLib_MultiSzIndex()` is used for handling arrays of string values. Rather than using an array of `char*` pointers, you simply write the values into a string constant separated by "\0" values. For example, for three values, you might write:
 
    ```c++
-   char my_list[] = 
-   	"one" "\0"
-   	"two" "\0"
-   	"three" "\0"
-   	;
+   char my_list[] =
+       "one" "\0"
+       "two" "\0"
+       "three" "\0"
+       ;
    ```
 
    Then, `McciAdkLib_MultiSzIndex(my_list, 0)` will return a pointer to `"one"`, `McciAdkLib_MultiSzIndex(my_list, 1)` will return `"two"`, and `McciAdkLib_MultiSzIndex(my_list, 2)` will return `"three"`. Other indices will return `nullptr`.
@@ -147,7 +148,6 @@ If you find a bug you can submit an issue here on github:
 
 https://github.com/mcci-catena/Cantea-mcciadk/issues
 
-
 Before posting a new issue, please check if the same problem has been already reported by someone else to avoid duplicates.
 
 ## License and Credits
@@ -164,7 +164,7 @@ Terry Moore and ChaeHee Won of MCCI were the pricipal contributors to the code i
 
 MCCI and MCCI Catena are registered trademarks of MCCI Corporation. All other trademarks are the properties of their respective owners.
 
-### Support Open Source Hardware 
+### Support Open Source Hardware
 
 MCCI invests time and resources providing this open source code, please support MCCI and open-source hardware by purchasing products from MCCI, Adafruit and other open-source hardware/software vendors!
 
