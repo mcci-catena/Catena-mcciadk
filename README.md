@@ -2,10 +2,11 @@
 
 This repository contains the MCCI&reg; ADK, a version of the MCCI XDK adapted for use on Catena&reg;-like Arduinos by [MCCI Corporation](http://www.mcci.com).
 
-[![GitHub release](https://img.shields.io/github/release/mcci-catena/Catena-mcciadk.svg)](https://github.com/mcci-catena/arduino-lorawan/releases/latest) [![GitHub commits](https://img.shields.io/github/commits-since/mcci-catena/Catena-mcciadk/latest.svg)](https://github.com/mcci-catena/Catena-mcciadk/compare/v0.1.4...master)
+[![GitHub release](https://img.shields.io/github/release/mcci-catena/Catena-mcciadk.svg)](https://github.com/mcci-catena/arduino-lorawan/releases/latest) [![GitHub commits](https://img.shields.io/github/commits-since/mcci-catena/Catena-mcciadk/latest.svg)](https://github.com/mcci-catena/Catena-mcciadk/compare/v0.2.0...master)
 [![Build Status](https://travis-ci.com/mcci-catena/Catena-mcciadk.svg?branch=master)](https://travis-ci.com/mcci-catena/Catena-mcciadk)
 
 **Contents**
+
 <!-- TOC depthFrom:2 updateOnSave:true -->
 
 - [Introduction](#introduction)
@@ -26,6 +27,7 @@ This repository contains the MCCI&reg; ADK, a version of the MCCI XDK adapted fo
 	- [Support Open Source Hardware](#support-open-source-hardware)
 
 <!-- /TOC -->
+
 ## Introduction
 
 MCCI uses its XDK (cross-platform development kit) for writing portable code for use across development environments, compilers and operating systems. Although we don't think it's really appropriate for Arduino work, we find some of its idioms extremely useful, along with some of the functions.
@@ -113,16 +115,16 @@ This header file provides a number of portable APIs for use by ADK clients.
 
 - `McciAdkLib_CharIsLower()`, `McciAdkLib_CharIsPrint()`, `McciAdkLib_CharIsUpper()`, `McciAdkLib_CharIsWhite()`, and `McciAdkLib_CharToLower()` duplicate some of the functions of `<ctype.h>`. They're justified because they avoid Unicode and other portability distractions in embedded systems with small memory.
 
-- `McciAdkLib_StringCompareCaseInsensitive()` compares two ASCII strings without considering case, and also without internationalization considerations. 
+- `McciAdkLib_StringCompareCaseInsensitive()` compares two ASCII strings without considering case, and also without internationalization considerations.
 
 - `McciAdkLib_MultiSzIndex()` is used for handling arrays of string values. Rather than using an array of `char*` pointers, you simply write the values into a string constant separated by "\0" values. For example, for three values, you might write:
 
    ```c++
-   char my_list[] = 
-   	"one" "\0"
-   	"two" "\0"
-   	"three" "\0"
-   	;
+   char my_list[] =
+       "one" "\0"
+       "two" "\0"
+       "three" "\0"
+       ;
    ```
 
    Then, `McciAdkLib_MultiSzIndex(my_list, 0)` will return a pointer to `"one"`, `McciAdkLib_MultiSzIndex(my_list, 1)` will return `"two"`, and `McciAdkLib_MultiSzIndex(my_list, 2)` will return `"three"`. Other indices will return `nullptr`.
@@ -137,6 +139,8 @@ This header file provides a number of portable APIs for use by ADK clients.
 
 ## Release History
 
+- v0.2.0 is a minor release. The only difference is in library.properties, renaming the library "MCCI Arduino Development Kit ADK" to comply with naming restrictions (issue [#16](https://github.com/mcci-catena/Catena-mcciadk/issues/16)). Also, we discovered a typo in the release tag itself for v0.1.4; the tag says v0.1.14. Rather than fixing this or jumping to v0.1.15, we jumped to v0.2.0.
+
 - v0.1.4 is a minor release. It adds `McciAdkLib_SafeCopyString()` (issue [#8](https://github.com/mcci-catena/Catena-mcciadk/issues/8)). Fixed a bug due to use of dot_a_linkage (issue [#10](https://github.com/mcci-catena/Catena-mcciadk/issues/10)). CI testing was extended to the MCCI STM32-based board support package (v2.0.0 or later).
 
 - v0.1.3 adds documentation, continuous integration with Travis CI, and fixes some compile warnings.
@@ -146,7 +150,6 @@ This header file provides a number of portable APIs for use by ADK clients.
 If you find a bug you can submit an issue here on github:
 
 https://github.com/mcci-catena/Cantea-mcciadk/issues
-
 
 Before posting a new issue, please check if the same problem has been already reported by someone else to avoid duplicates.
 
@@ -164,7 +167,7 @@ Terry Moore and ChaeHee Won of MCCI were the pricipal contributors to the code i
 
 MCCI and MCCI Catena are registered trademarks of MCCI Corporation. All other trademarks are the properties of their respective owners.
 
-### Support Open Source Hardware 
+### Support Open Source Hardware
 
 MCCI invests time and resources providing this open source code, please support MCCI and open-source hardware by purchasing products from MCCI, Adafruit and other open-source hardware/software vendors!
 
