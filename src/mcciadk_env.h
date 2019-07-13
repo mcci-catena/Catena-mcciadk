@@ -34,6 +34,23 @@ Revision history:
 #ifndef _MCCIADK_ENV_H_		/* prevent multiple includes */
 #define _MCCIADK_ENV_H_
 
+#define MCCIADK_VERSION_CALC(major, minor, patch, local)	\
+	(((major) << 24u) | ((minor) << 16u) | ((patch) << 8u) | (local))
+
+#define	MCCIADK_VERSION	MCCIADK_VERSION_CALC(0, 2, 0, 1)	/* v0.2.0.1 */
+
+#define	MCCIADK_VERSION_GET_MAJOR(v)	\
+	(((v) >> 24u) & 0xFFu)
+
+#define	MCCIADK_VERSION_GET_MINOR(v)	\
+	(((v) >> 16u) & 0xFFu)
+
+#define	MCCIADK_VERSION_GET_PATCH(v)	\
+	(((v) >> 8u) & 0xFFu)
+
+#define	MCCIADK_VERSION_GET_LOCAL(v)	\
+	((v) & 0xFFu)
+
 #define	MCCIADK_STRING(x)	#x
 #define	MCCIADK_STRINGVAL(x)	MCCIADK_STRING(x)
 #define MCCIADK_CONCAT(x,y)	x##y
