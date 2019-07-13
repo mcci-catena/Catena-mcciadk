@@ -1,5 +1,3 @@
-/* mcciadk_env.h	Mon Oct 17 2016 02:21:06 tmm */
-
 /*
 
 Module:  mcciadk_env.h
@@ -7,33 +5,46 @@ Module:  mcciadk_env.h
 Function:
 	Environment for ADK work.
 
-Version:
-	V0.1.0	Mon Oct 17 2016 02:21:06 tmm	Edit level 1
-
 Copyright notice:
-	This file copyright (C) 2016 by
+	See accompanying LICENSE file.
 
-		MCCI Corporation
-		3520 Krums Corners Road
-		Ithaca, NY  14850
-
-	An unpublished work.  All rights reserved.
-	
-	This file is proprietary information, and may not be disclosed or
-	copied without the prior permission of MCCI Corporation.
- 
 Author:
 	Terry Moore, MCCI Corporation	October 2016
-
-Revision history:
-   0.1.0  Mon Oct 17 2016 02:21:06  tmm
-	Module created.
 
 */
 
 #ifndef _MCCIADK_ENV_H_		/* prevent multiple includes */
 #define _MCCIADK_ENV_H_
 
+/****************************************************************************\
+|
+|	The MCCIADK version.
+|
+\****************************************************************************/
+
+#define MCCIADK_VERSION_CALC(major, minor, patch, local)	\
+	(((major) << 24u) | ((minor) << 16u) | ((patch) << 8u) | (local))
+
+#define	MCCIADK_VERSION	MCCIADK_VERSION_CALC(0, 2, 0, 1)	/* v0.2.0.1 */
+
+#define	MCCIADK_VERSION_GET_MAJOR(v)	\
+	(((v) >> 24u) & 0xFFu)
+
+#define	MCCIADK_VERSION_GET_MINOR(v)	\
+	(((v) >> 16u) & 0xFFu)
+
+#define	MCCIADK_VERSION_GET_PATCH(v)	\
+	(((v) >> 8u) & 0xFFu)
+
+#define	MCCIADK_VERSION_GET_LOCAL(v)	\
+	((v) & 0xFFu)
+
+/****************************************************************************\
+|
+|	The basic stringification macros
+|
+\****************************************************************************/
+
 #define	MCCIADK_STRING(x)	#x
 #define	MCCIADK_STRINGVAL(x)	MCCIADK_STRING(x)
 #define MCCIADK_CONCAT(x,y)	x##y
@@ -82,7 +93,7 @@ Description:
 	error. The results of using this macro where a declaration is not
 	permitted are unspecified.
 
-	This is different from #if !(fErrorIfFalse) / #error in that the 
+	This is different from #if !(fErrorIfFalse) / #error in that the
 	expression is evaluated by the compiler rather than by the pre-
 	processor. Therefore things like sizeof() can be used.
 
@@ -123,7 +134,7 @@ Function:
 	intentionally unused.
 
 Definition:
-	MCCIADK_UNREFERENCED_PARAMETER(name)	
+	MCCIADK_UNREFERENCED_PARAMETER(name)
 	MCCIADK_API_PARAMETER(name)
 	MCCIADK_UNREFERENCED_VARIABLE(name)
 

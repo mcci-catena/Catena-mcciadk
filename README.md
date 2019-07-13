@@ -11,6 +11,7 @@ This repository contains the MCCI&reg; ADK, a version of the MCCI XDK adapted fo
 
 - [Introduction](#introduction)
 - [`mcciadk_env.h`](#mcciadk_envh)
+	- [Library versions](#library-versions)
 	- [Compile-time text manipulation](#compile-time-text-manipulation)
 	- [Value Computation](#value-computation)
 	- [Static Assert](#static-assert)
@@ -50,6 +51,15 @@ We'll discuss them in turn.
 ## `mcciadk_env.h`
 
 This header file sets up a common compile-time environment.
+
+### Library versions
+
+- `MCCIADK_VERSION` is the current library version, as computed by `MCCIADK_VERSION_CALC()`
+- `MCCIADK_VERSION_CALC(major, minor, patch, local)` calculates a 32-bit integer based on the Semantic Version v2.0 info given by `major`, `minor`, `patch`, and `local`. Each field is an integer in the range 0..255. The integers returned are guaranteed to compare arithmetically in the same order expected by a semantic version comparison.
+- `MCCIADK_VERSION_GET_MAJOR(version)` returns the major number field of `version`.
+- `MCCIADK_VERSION_GET_MINOR(version)` returns the minor number field of `version`.
+- `MCCIADK_VERSION_GET_PATCH(version)` returns the patch number field of `version`.
+- `MCCIADK_VERSION_GET_LOCAL(version)` returns the local number field of `version`.
 
 ### Compile-time text manipulation
 
