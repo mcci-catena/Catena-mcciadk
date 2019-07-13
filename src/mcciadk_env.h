@@ -1,5 +1,3 @@
-/* mcciadk_env.h	Mon Oct 17 2016 02:21:06 tmm */
-
 /*
 
 Module:  mcciadk_env.h
@@ -7,33 +5,23 @@ Module:  mcciadk_env.h
 Function:
 	Environment for ADK work.
 
-Version:
-	V0.1.0	Mon Oct 17 2016 02:21:06 tmm	Edit level 1
-
 Copyright notice:
-	This file copyright (C) 2016 by
+	See accompanying LICENSE file.
 
-		MCCI Corporation
-		3520 Krums Corners Road
-		Ithaca, NY  14850
-
-	An unpublished work.  All rights reserved.
-	
-	This file is proprietary information, and may not be disclosed or
-	copied without the prior permission of MCCI Corporation.
- 
 Author:
 	Terry Moore, MCCI Corporation	October 2016
-
-Revision history:
-   0.1.0  Mon Oct 17 2016 02:21:06  tmm
-	Module created.
 
 */
 
 #ifndef _MCCIADK_ENV_H_		/* prevent multiple includes */
 #define _MCCIADK_ENV_H_
 
+/****************************************************************************\
+|
+|	The MCCIADK version.
+|
+\****************************************************************************/
+
 #define MCCIADK_VERSION_CALC(major, minor, patch, local)	\
 	(((major) << 24u) | ((minor) << 16u) | ((patch) << 8u) | (local))
 
@@ -50,6 +38,12 @@ Revision history:
 
 #define	MCCIADK_VERSION_GET_LOCAL(v)	\
 	((v) & 0xFFu)
+
+/****************************************************************************\
+|
+|	The basic stringification macros
+|
+\****************************************************************************/
 
 #define	MCCIADK_STRING(x)	#x
 #define	MCCIADK_STRINGVAL(x)	MCCIADK_STRING(x)
