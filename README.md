@@ -5,8 +5,10 @@ This repository contains the MCCI&reg; ADK, a version of the MCCI XDK adapted fo
 [![GitHub release](https://img.shields.io/github/release/mcci-catena/Catena-mcciadk.svg)](https://github.com/mcci-catena/arduino-lorawan/releases/latest) [![GitHub commits](https://img.shields.io/github/commits-since/mcci-catena/Catena-mcciadk/latest.svg)](https://github.com/mcci-catena/Catena-mcciadk/compare/v0.2.1...master)
 [![Build Status](https://travis-ci.com/mcci-catena/Catena-mcciadk.svg?branch=master)](https://travis-ci.com/mcci-catena/Catena-mcciadk)
 
-**Contents**
+**Contents:**
 
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable -->
 <!-- TOC depthFrom:2 updateOnSave:true -->
 
 - [Introduction](#introduction)
@@ -28,6 +30,7 @@ This repository contains the MCCI&reg; ADK, a version of the MCCI XDK adapted fo
 	- [Support Open Source Hardware](#support-open-source-hardware)
 
 <!-- /TOC -->
+<!-- markdownlint-restore -->
 
 ## Introduction
 
@@ -161,7 +164,7 @@ This header file provides a number of portable APIs for use by ADK clients.
 
 If you find a bug you can submit an issue here on github:
 
-https://github.com/mcci-catena/Cantea-mcciadk/issues
+[github.com/mcci-catena/Catena-mcciadk/issues](https://github.com/mcci-catena/Catena-mcciadk/issues)
 
 Before posting a new issue, please check if the same problem has been already reported by someone else to avoid duplicates.
 
