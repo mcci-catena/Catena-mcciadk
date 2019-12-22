@@ -20,10 +20,10 @@ sudo: false
 env:
   global:
    - IDE_VERSION=1.8.10
- matrix:
-  - TARGET=samd
-  - TARGET=stm32l0
-  - TARGET=esp32
+  matrix:
+   - TARGET=samd
+   - TARGET=stm32l0
+   - TARGET=esp32
 
 cache:
   directories:
