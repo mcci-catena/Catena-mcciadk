@@ -13,21 +13,22 @@ This repository contains the MCCI&reg; ADK, a version of the MCCI XDK adapted fo
 
 - [Introduction](#introduction)
 - [`mcciadk_env.h`](#mcciadk_envh)
-	- [Library versions](#library-versions)
-	- [Compile-time text manipulation](#compile-time-text-manipulation)
-	- [Value Computation](#value-computation)
-	- [Static Assert](#static-assert)
-	- [C++/C wrappers](#cc-wrappers)
-	- [Parameter and Variable Decoration](#parameter-and-variable-decoration)
+    - [Library versions](#library-versions)
+    - [Compile-time text manipulation](#compile-time-text-manipulation)
+    - [Value Computation](#value-computation)
+    - [Static Assert](#static-assert)
+    - [C++/C wrappers](#cc-wrappers)
+    - [Parameter and Variable Decoration](#parameter-and-variable-decoration)
 - [`mcciadk_guid.h`](#mcciadk_guidh)
 - [`mcciadk_baselib.h`](#mcciadk_baselibh)
+- [Targeted platforms](#targeted-platforms)
 - [Release History](#release-history)
 - [Bugs or Issues](#bugs-or-issues)
 - [License and Credits](#license-and-credits)
-	- [MIT License](#mit-license)
-	- [Contributors](#contributors)
-	- [Trademark Acknowledgements](#trademark-acknowledgements)
-	- [Support Open Source Hardware](#support-open-source-hardware)
+    - [MIT License](#mit-license)
+    - [Contributors](#contributors)
+    - [Trademark Acknowledgements](#trademark-acknowledgements)
+    - [Support Open Source Hardware](#support-open-source-hardware)
 
 <!-- /TOC -->
 <!-- markdownlint-restore -->
@@ -36,9 +37,9 @@ This repository contains the MCCI&reg; ADK, a version of the MCCI XDK adapted fo
 
 MCCI uses its XDK (cross-platform development kit) for writing portable code for use across development environments, compilers and operating systems. Although we don't think it's really appropriate for Arduino work, we find some of its idioms extremely useful, along with some of the functions.
 
-By convention, MCCI makes specific versions of development environments for different targets. We have, for example, a "MCCI WDK" library for use in with the Microsoft Windows Driver Development Kit; we have an "LDK" library for use with the Linux kernel; and we have a "PDK" library for use in portable Posix application development. All share basic features with the XDK. So it made sense to us to create an "Arduino Development Kit" ("ADK") that makes it easy to bring in other MCCI code to Arduino environments.
+By convention, MCCI makes specific versions of development environments for different targets. We have, for example, a "MCCI WDK" library for use in with the Microsoft Windows Driver Development Kit; we have an "LDK" library for use with the Linux kernel; and we have a "PDK" library for use in portable POSIX application development. All share basic features with the XDK. So it made sense to us to create an "Arduino Development Kit" ("ADK") that makes it easy to bring in other MCCI code to Arduino environments.
 
-Some of these macros represent ways of dealing with portabiltiy that actually are not applicable in the Arduino environment. However, we use them anyway.
+Some of these macros represent ways of dealing with portability that actually are not applicable in the Arduino environment. However, we use them anyway.
 
 - MCCI has lots of code that use these constructs, and it's easier (and more reliable) to port in the code using the macros.
 - If we use these macros, we can quickly port code that we develop in the Arduino environment to our other xDKs.
@@ -84,7 +85,7 @@ This header file sets up a common compile-time environment.
 
 - `MCCIADK_C_ASSERT(constExpr)`: this is the equivalent of C++- 2017's `static_assert(constExpr)` built-in. It generates a compile-time error if `constExpr` evaluates to zero. The compile error is, unfortunately, not terribly informative (as it will refer to the declaration of an array with negative size).
 
-Use this whereever a declaration is valid.
+Use this wherever a declaration is valid.
 
 ### C++/C wrappers
 
@@ -96,7 +97,7 @@ extern "C" {
 #endif
 ```
 
-and it's close. We think it adds typing and is just kind of ugly. And we strive to minimize `#if` in code files (as opposed to header files.) So instead, we have macros:
+and the equivalent that's needed at the end of a C header file. We think it adds typing and is just kind of ugly. And we strive to minimize `#if` in code files (as opposed to header files.) So instead, we have macros:
 
 - `MCCIADK_BEGIN_DECLS` expands to the `extern "C" {` wrapper if compiling in C++ mode, or to nothing otherwise.
 
@@ -150,7 +151,15 @@ This header file provides a number of portable APIs for use by ADK clients.
    2. They behave differently on buffer overflow. They always return the actual length of the string written to buffer, without the trailing `\0', not the length that might have been written.
    3. They allow you to easily index into the output buffer.
 
+## Targeted platforms
+
+This library is intended for systems with 32-bit or wider architecture. It might work with AVR32 systems, but has not been tested or compiled.
+
+MCCI uses this library regularly on ARM Cortex M0 platforms. Two of these platforms are covered by the Travis CI tests (Microchip SAMD21, and STM32L0). In addition, some users of the MCCI LoRaWAN software use ESP32, so we do CI testing with ESP32. MCCI doesn't regularly use the code on that platform, however.
+
 ## Release History
+
+- HEAD (v0.2.1.10) has improvements for ESP32 compilation, and improves CI testing.
 
 - v0.2.1 is a minor release. It adds `MCCIADK_VERSION` and support macros, so that the Catena Arduino Platform can display the version of the libraries for `system version`.
 
@@ -160,11 +169,13 @@ This header file provides a number of portable APIs for use by ADK clients.
 
 - v0.1.3 adds documentation, continuous integration with Travis CI, and fixes some compile warnings.
 
+- Earlier versions existed; see the Git history.
+
 ## Bugs or Issues
 
-If you find a bug you can submit an issue here on github:
+If you find a bug you can submit an issue here on GitHub:
 
-[github.com/mcci-catena/Catena-mcciadk/issues](https://github.com/mcci-catena/Catena-mcciadk/issues)
+[`github.com/mcci-catena/Catena-mcciadk/issues`](https://github.com/mcci-catena/Catena-mcciadk/issues)
 
 Before posting a new issue, please check if the same problem has been already reported by someone else to avoid duplicates.
 
@@ -176,7 +187,7 @@ Please refer to the license file accompanying this repository.
 
 ### Contributors
 
-Terry Moore and ChaeHee Won of MCCI were the pricipal contributors to the code in the ADK (and the XDK on which it's based).
+Terry Moore and ChaeHee Won of MCCI were the principal contributors to the code in the ADK (and the XDK on which it's based).
 
 ### Trademark Acknowledgements
 
