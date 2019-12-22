@@ -36,17 +36,46 @@ McciAdkLib_BufferToUlong(
 	bool *pfOverflow
 	);
 
+// convert a buffer of chars to a uint32_t.
 static inline size_t
 McciAdkLib_BufferToUint32(
 	const char *s,
 	size_t n,
 	unsigned base,
-	uint32_t *pulnum,
+	uint32_t *puint32,
 	bool *pfOverflow
 	)
 	{
-	// this will throw a compile error if uint32_t != ulong
-	return McciAdkLib_BufferToUlong(s, n, base, pulnum, pfOverflow);
+	if (sizeof(uint32_t) == sizeof(unsigned long))
+		{
+		// some compilers think that uint32_t is not the same as unsigned long,
+		// even if it's the same size. Hence the type-cast to ulong*.
+		return McciAdkLib_BufferToUlong(s, n, base, (unsigned long *)puint32, pfOverflow);
+		}
+	else
+		{
+		// this code is only used on plagfroms where unsigned long is a different
+		// size than uint32_t.
+		unsigned long nonce;
+		bool fOverflow;
+		size_t const result = McciAdkLib_BufferToUlong(s, n, base, &nonce, &fOverflow);
+
+		if (nonce > UINT32_MAX)
+			{
+			fOverflow = true;
+			nonce = UINT32_MAX;
+			}
+		if (puint32)
+			{
+			*puint32 = (uint32_t)nonce;
+			}
+		if (pfOverflow)
+			{
+			*pfOverflow = fOverflow;
+			}
+
+		return result;
+		}
 	}
 
 // check whether c is a decimal digit
