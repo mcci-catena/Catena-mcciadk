@@ -53,7 +53,7 @@ before_install:
   # arduino_lorawan looks for project_config things, so we must put
   # things in the canonical place
   #
-  - export LIBPATH="$HOME/arduino_ide/libraries"
+  - export LIBPATH="$HOME/$ARDUINO_IDE/libraries"
   - export THISLIB="$LIBPATH/Catena-mcciadk"
   - export REQLIBS=
   - mkdir -p "$LIBPATH"
