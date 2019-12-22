@@ -2,7 +2,7 @@
 
 This repository contains the MCCI&reg; ADK, a version of the MCCI XDK adapted for use on Catena&reg;-like Arduinos by [MCCI Corporation](http://www.mcci.com).
 
-[![GitHub release](https://img.shields.io/github/release/mcci-catena/Catena-mcciadk.svg)](https://github.com/mcci-catena/arduino-lorawan/releases/latest) [![GitHub commits](https://img.shields.io/github/commits-since/mcci-catena/Catena-mcciadk/latest.svg)](https://github.com/mcci-catena/Catena-mcciadk/compare/v0.2.1...master)
+[![GitHub release](https://img.shields.io/github/release/mcci-catena/Catena-mcciadk.svg)](https://github.com/mcci-catena/arduino-lorawan/releases/latest) [![GitHub commits](https://img.shields.io/github/commits-since/mcci-catena/Catena-mcciadk/latest.svg)](https://github.com/mcci-catena/Catena-mcciadk/compare/v0.2.2...master)
 [![Build Status](https://travis-ci.com/mcci-catena/Catena-mcciadk.svg?branch=master)](https://travis-ci.com/mcci-catena/Catena-mcciadk)
 
 **Contents:**
@@ -159,7 +159,7 @@ MCCI uses this library regularly on ARM Cortex M0 platforms. Two of these platfo
 
 ## Release History
 
-- HEAD (v0.2.1.10) has improvements for ESP32 compilation, and improves CI testing.
+- v0.2.2 is a minor release. It has improvements for ESP32 compilation, and improves CI testing.
 
 - v0.2.1 is a minor release. It adds `MCCIADK_VERSION` and support macros, so that the Catena Arduino Platform can display the version of the libraries for `system version`.
 
