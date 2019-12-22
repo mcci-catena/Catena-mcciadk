@@ -82,7 +82,7 @@ before_install:
 
   #
   # Put one or more arguments into nonce header file; $1 is the name of the sketch, and $1 is the header file to test
-  - function _maketestheader { UNIT="$1" ; shift ; UNITDIR="$NONCEDIR/$(basename $UNIT .ino)" ; rm -rf $UNITDIR ; mkdir -p $UNITDIR ; { for i in "$@" ; do printf '#include "%s"\n' "$i" ; done ; printf 'void setup() {}\nvoid loop() {}\n' ; } > $UNITDIR/$UNIT ; echo $UNITDIR/$UNIT ; }
+  - function _maketestheader { UNIT="$1" ; shift ; UNITDIR="$NONCEDIR/$(basename $UNIT .ino)" ; rm -rf $UNITDIR ; mkdir -p $UNITDIR ; { for i in "$@" ; do printf '#include <%s>\n' "$i" ; done ; printf 'void setup() {}\nvoid loop() {}\n' ; } > $UNITDIR/$UNIT ; echo $UNITDIR/$UNIT ; }
 
   #
   # Handy macro to deal with expected failures.
