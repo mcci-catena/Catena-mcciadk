@@ -25,7 +25,7 @@ Author:
 #define MCCIADK_VERSION_CALC(major, minor, patch, local)	\
 	(((major) << 24u) | ((minor) << 16u) | ((patch) << 8u) | (local))
 
-#define	MCCIADK_VERSION	MCCIADK_VERSION_CALC(0, 2, 1, 0)	/* v0.2.1.0 */
+#define	MCCIADK_VERSION	MCCIADK_VERSION_CALC(0, 2, 1, 10)	/* v0.2.1.10 */
 
 #define	MCCIADK_VERSION_GET_MAJOR(v)	\
 	(((v) >> 24u) & 0xFFu)
