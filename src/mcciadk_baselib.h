@@ -27,6 +27,7 @@ Author:
 
 MCCIADK_BEGIN_DECLS
 
+// convert a buffer of chars to an unsigned long.
 size_t
 McciAdkLib_BufferToUlong(
 	const char *s,
@@ -136,6 +137,7 @@ McciAdkLib_CharToLower(
 		return c;
 	}
 
+// copy a string into a buffer, starting at an offset in the buffer.
 size_t
 McciAdkLib_SafeCopyString(
 	char *pBuffer,
@@ -151,6 +153,7 @@ McciAdkLib_StringCompareCaseInsensitive(
         const char *pRight
         );
 
+// prepare a canonical "hex dump" line from a buffer.
 size_t
 McciAdkLib_FormatDumpLine(
 	char *pLine,
@@ -161,12 +164,14 @@ McciAdkLib_FormatDumpLine(
 	size_t nBuffer
 	);
 
+// index into a string of null-terminated strings, terminated by a double-null.
 const char *
 McciAdkLib_MultiSzIndex(
 	const char * pmultiszStrings,
 	unsigned uIndex
 	);
 
+// a portable snprintf() to get away from compiler variations.
 size_t
 McciAdkLib_Snprintf(
 	char *pOutbuf,
@@ -176,6 +181,7 @@ McciAdkLib_Snprintf(
 	...
 	);
 
+// a portable vsnprintf() to avoid compiler variations.
 size_t
 McciAdkLib_Vsnprintf(
 	char *pOutbuf,
