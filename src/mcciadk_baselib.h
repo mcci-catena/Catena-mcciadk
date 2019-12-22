@@ -27,6 +27,7 @@ Author:
 
 MCCIADK_BEGIN_DECLS
 
+// convert a buffer of chars to an unsigned long.
 size_t
 McciAdkLib_BufferToUlong(
 	const char *s,
@@ -36,17 +37,46 @@ McciAdkLib_BufferToUlong(
 	bool *pfOverflow
 	);
 
+// convert a buffer of chars to a uint32_t.
 static inline size_t
 McciAdkLib_BufferToUint32(
 	const char *s,
 	size_t n,
 	unsigned base,
-	uint32_t *pulnum,
+	uint32_t *puint32,
 	bool *pfOverflow
 	)
 	{
-	// this will throw a compile error if uint32_t != ulong
-	return McciAdkLib_BufferToUlong(s, n, base, pulnum, pfOverflow);
+	if (sizeof(uint32_t) == sizeof(unsigned long))
+		{
+		// some compilers think that uint32_t is not the same as unsigned long,
+		// even if it's the same size. Hence the type-cast to ulong*.
+		return McciAdkLib_BufferToUlong(s, n, base, (unsigned long *)puint32, pfOverflow);
+		}
+	else
+		{
+		// this code is only used on plagfroms where unsigned long is a different
+		// size than uint32_t.
+		unsigned long nonce;
+		bool fOverflow;
+		size_t const result = McciAdkLib_BufferToUlong(s, n, base, &nonce, &fOverflow);
+
+		if (nonce > UINT32_MAX)
+			{
+			fOverflow = true;
+			nonce = UINT32_MAX;
+			}
+		if (puint32)
+			{
+			*puint32 = (uint32_t)nonce;
+			}
+		if (pfOverflow)
+			{
+			*pfOverflow = fOverflow;
+			}
+
+		return result;
+		}
 	}
 
 // check whether c is a decimal digit
@@ -107,6 +137,7 @@ McciAdkLib_CharToLower(
 		return c;
 	}
 
+// copy a string into a buffer, starting at an offset in the buffer.
 size_t
 McciAdkLib_SafeCopyString(
 	char *pBuffer,
@@ -122,6 +153,7 @@ McciAdkLib_StringCompareCaseInsensitive(
         const char *pRight
         );
 
+// prepare a canonical "hex dump" line from a buffer.
 size_t
 McciAdkLib_FormatDumpLine(
 	char *pLine,
@@ -132,12 +164,14 @@ McciAdkLib_FormatDumpLine(
 	size_t nBuffer
 	);
 
+// index into a string of null-terminated strings, terminated by a double-null.
 const char *
 McciAdkLib_MultiSzIndex(
 	const char * pmultiszStrings,
 	unsigned uIndex
 	);
 
+// a portable snprintf() to get away from compiler variations.
 size_t
 McciAdkLib_Snprintf(
 	char *pOutbuf,
@@ -147,6 +181,7 @@ McciAdkLib_Snprintf(
 	...
 	);
 
+// a portable vsnprintf() to avoid compiler variations.
 size_t
 McciAdkLib_Vsnprintf(
 	char *pOutbuf,
