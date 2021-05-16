@@ -18,10 +18,10 @@ Copyright notice:
 		Ithaca, NY  14850
 
 	An unpublished work.  All rights reserved.
-	
+
 	This file is proprietary information, and may not be disclosed or
 	copied without the prior permission of MCCI Corporation.
- 
+
 Author:
 	Terry Moore, MCCI Corporation	March 2017
 
@@ -39,7 +39,7 @@ Revision history:
 |
 |		Manifest constants & typedefs.
 |
-|	This is strictly for private types and constants which will not 
+|	This is strictly for private types and constants which will not
 |	be exported.
 |
 \****************************************************************************/
@@ -50,7 +50,7 @@ Revision history:
 |
 |	Read-only data.
 |
-|	If program is to be ROM-able, these must all be tagged read-only 
+|	If program is to be ROM-able, these must all be tagged read-only
 |	using the ROM storage class; they may be global.
 |
 \****************************************************************************/
@@ -63,7 +63,7 @@ Revision history:
 |
 |	If program is to be ROM-able, these must be initialized
 |	using the BSS keyword.  (This allows for compilers that require
-|	every variable to have an initializer.)  Note that only those 
+|	every variable to have an initializer.)  Note that only those
 |	variables owned by this module should be declared here, using the BSS
 |	keyword; this allows for linkers that dislike multiple declarations
 |	of objects.
@@ -99,7 +99,7 @@ Definition:
 
 Description:
 	These functions call snprintf() so that the resulting string is
-	formatted starting at offset iOutbuf in the buffer at pOutbuf, 
+	formatted starting at offset iOutbuf in the buffer at pOutbuf,
 	ensuring that writes never go outsize pOutbuf + [0..nOutbuf-1],
 	and ensuring that the resulting string is nul-terminated. (This
 	means that the actual length can never be more than nOutbuf-1,
@@ -156,6 +156,6 @@ McciAdkLib_Vsnprintf(
 		pOutbuf[nOutbuf - 1] = '\0';
 		nSprintf = nOutbuf - iOutbuf - 1;
 		}
-	
+
 	return nSprintf;
 	}

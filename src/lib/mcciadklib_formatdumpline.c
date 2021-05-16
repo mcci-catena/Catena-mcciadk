@@ -18,10 +18,10 @@ Copyright notice:
 		Ithaca, NY  14850
 
 	An unpublished work.  All rights reserved.
-	
+
 	This file is proprietary information, and may not be disclosed or
 	copied without the prior permission of MCCI Corporation.
- 
+
 Author:
 	Terry Moore, MCCI Corporation	March 2017
 
@@ -51,8 +51,8 @@ Definition:
 		);
 
 Description:
-	A standard dump line is produced into pLine starting at offset iLine. 
-	The number of characters written is returned. A '\0' is always 
+	A standard dump line is produced into pLine starting at offset iLine.
+	The number of characters written is returned. A '\0' is always
 	appended but not included in the length. Writes are restricted to
 	the range pLine + [0, nLine-1].
 

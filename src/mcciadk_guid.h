@@ -18,10 +18,10 @@ Copyright notice:
 		Ithaca, NY  14850
 
 	An unpublished work.  All rights reserved.
-	
+
 	This file is proprietary information, and may not be disclosed or
 	copied without the prior permission of MCCI Corporation.
- 
+
 Author:
 	Terry Moore, MCCI Corporation	October 2016
 
@@ -83,9 +83,9 @@ MCCIADK_C_ASSERT(offsetof(MCCIADK_GUID_WIRE, clock_seq_low) == 9);
 MCCIADK_C_ASSERT(offsetof(MCCIADK_GUID_WIRE, node) == 10);
 MCCIADK_C_ASSERT(sizeof(MCCIADK_GUID_WIRE) == MCCIADK_GUID_WIRE__SIZE);
 
-/* 
-|| initialize at compile time -- note that the arguments match those of a 
-|| normal GUID initializer 
+/*
+|| initialize at compile time -- note that the arguments match those of a
+|| normal GUID initializer
 */
 #define MCCIADK_GUID_WIRE_INIT(t1, t2, t3, c1, c2, n1, n2, n3, n4, n5, n6) \
 	{								\
@@ -103,7 +103,7 @@ MCCIADK_C_ASSERT(sizeof(MCCIADK_GUID_WIRE) == MCCIADK_GUID_WIRE__SIZE);
 	}
 
 /*
-|| sometimes we need the bytes of a GUID deposited sequentiallly in a 
+|| sometimes we need the bytes of a GUID deposited sequentiallly in a
 || string
 */
 #define MCCIADK_GUID_BYTES_INIT(t1, t2, t3, c1, c2, n1, n2, n3, n4, n5, n6) \

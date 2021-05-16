@@ -18,10 +18,10 @@ Copyright notice:
 		Ithaca, NY  14850
 
 	An unpublished work.  All rights reserved.
-	
+
 	This file is proprietary information, and may not be disclosed or
 	copied without the prior permission of MCCI Corporation.
- 
+
 Author:
 	Terry Moore, MCCI Corporation	October 2016
 
@@ -58,7 +58,7 @@ Description:
 	beginning of a value is interpreted as the end of the list.
 
 Returns:
-	Pointer to a non-zero character if uIndex'th string is present, or to 
+	Pointer to a non-zero character if uIndex'th string is present, or to
 	the trailing NUL otherwise.
 
 */
@@ -71,8 +71,8 @@ McciAdkLib_MultiSzIndex(
 	{
 	const char *p;
 
-	for (p = pmultiszStrings; 
-	     *p != 0 && uIndex != 0; 
+	for (p = pmultiszStrings;
+	     *p != 0 && uIndex != 0;
 	     --uIndex)
 		{
 		/* skip to end of string */
@@ -83,7 +83,7 @@ McciAdkLib_MultiSzIndex(
 		++p; /* point to next string */
 		}
 
-	/* 
+	/*
 	|| either return pointer to trailing NUL (second of double-NUL)
 	|| or pointer to match.
 	*/

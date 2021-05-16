@@ -119,8 +119,8 @@ Description:
 	1.	If no digits are seen, 0 is returned.
 
 	2.	*pulnum is always guaranteed to be set to a value determined
-		by this function, even if errors are detected.  While not 
-		always an improvement, this makes *pulnum a functional result 
+		by this function, even if errors are detected.  While not
+		always an improvement, this makes *pulnum a functional result
 		of McciAdkLib_BufferToUlong().
 
 	3.	If base == 0, then the number is scanned adaptively, using
@@ -132,7 +132,7 @@ Description:
 	4.	If base == 16, there must be NO leading "0x" or "0X".
 
 	5.	If base == 0, and the input buffer (after deleting leading
-		blanks and consuming the optional minus sign) is "0x" or 
+		blanks and consuming the optional minus sign) is "0x" or
 		"0X" -- i.e., is the hex prefix ONLY --,
 		then this routine will convert the "0" and will return a
 		byte count indicating that the 'X' was not consumed.
@@ -151,7 +151,7 @@ Notes:
 	The input string must be UTF-8, latin1, ANSI, or a similar character
 	set that maps to ANSI.
 
-	There is no overflow checking. 
+	There is no overflow checking.
 
 	It is odd to support negation for an unsigned number input.
 
