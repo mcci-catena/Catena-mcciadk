@@ -11,16 +11,7 @@ Version:
 	V0.1.1	Sat Mar 18 2017 01:36:16 tmm	Edit level 2
 
 Copyright notice:
-	This file copyright (C) 2016-2017 by
-
-		MCCI Corporation
-		3520 Krums Corners Road
-		Ithaca, NY  14850
-
-	An unpublished work.  All rights reserved.
-
-	This file is proprietary information, and may not be disclosed or
-	copied without the prior permission of MCCI Corporation.
+	See accompanying LICENSE file.
 
 Author:
 	Terry Moore, MCCI Corporation	October 2016

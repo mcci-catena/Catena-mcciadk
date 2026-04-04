@@ -2,7 +2,7 @@
 
 This repository contains the MCCI&reg; ADK, a version of the MCCI XDK adapted for use on Catena&reg;-like Arduinos by [MCCI Corporation](http://www.mcci.com).
 
-[![GitHub release](https://img.shields.io/github/release/mcci-catena/Catena-mcciadk.svg)](https://github.com/mcci-catena/arduino-lorawan/releases/latest) [![GitHub commits](https://img.shields.io/github/commits-since/mcci-catena/Catena-mcciadk/latest.svg)](https://github.com/mcci-catena/Catena-mcciadk/compare/v0.2.2...master)
+[![GitHub release](https://img.shields.io/github/release/mcci-catena/Catena-mcciadk.svg)](https://github.com/mcci-catena/Catena-mcciadk/releases/latest) [![GitHub commits](https://img.shields.io/github/commits-since/mcci-catena/Catena-mcciadk/latest.svg)](https://github.com/mcci-catena/Catena-mcciadk/compare/v0.2.2...master)
 [![Build Status](https://travis-ci.com/mcci-catena/Catena-mcciadk.svg?branch=master)](https://travis-ci.com/mcci-catena/Catena-mcciadk)
 
 **Contents:**
@@ -77,13 +77,13 @@ This header file sets up a common compile-time environment.
 
 - `MCCIADK_CONTAINER_OF(innerPointer, OuterType, innerFieldName)`: given a pointer to a field in a larger structure, the type of the larger structure, and the name of the inner field, `MCCIADK_CONTAINER_OF()` returns a pointer of type `OuterType` pointing to the larger structure.
 
-- `MCCIADK_MEMTAG()`: generates a consistent memory tag (with controlled byte order) from a four-byte sequence. Often used to tag data structures to assist with port-mortem crash analysis.
+- `MCCIADK_MEMTAG()`: generates a consistent memory tag (with controlled byte order) from a four-byte sequence. Often used to tag data structures to assist with post-mortem crash analysis.
 
 - `MCCIADK_LENOF(array)`: returns the number of elements in the array (as opposed to `sizeof(array)`, which returns the number of bytes in the array).
 
 ### Static Assert
 
-- `MCCIADK_C_ASSERT(constExpr)`: this is the equivalent of C++- 2017's `static_assert(constExpr)` built-in. It generates a compile-time error if `constExpr` evaluates to zero. The compile error is, unfortunately, not terribly informative (as it will refer to the declaration of an array with negative size).
+- `MCCIADK_C_ASSERT(constExpr)`: this is the equivalent of C++17's `static_assert(constExpr)` built-in. It generates a compile-time error if `constExpr` evaluates to zero. The compile error is, unfortunately, not terribly informative (as it will refer to the declaration of an array with negative size).
 
 Use this wherever a declaration is valid.
 
@@ -127,7 +127,9 @@ This header file provides a number of portable APIs for use by ADK clients.
 
 - `McciAdkLib_BufferToUint32()` converts a string buffer to a `uint32_t`. It has well-defined error handling and overflow properties.
 
-- `McciAdkLib_CharIsLower()`, `McciAdkLib_CharIsPrint()`, `McciAdkLib_CharIsUpper()`, `McciAdkLib_CharIsWhite()`, and `McciAdkLib_CharToLower()` duplicate some of the functions of `<ctype.h>`. They're justified because they avoid Unicode and other portability distractions in embedded systems with small memory.
+- `McciAdkLib_CharIsDigit()`, `McciAdkLib_CharIsLower()`, `McciAdkLib_CharIsPrint()`, `McciAdkLib_CharIsUpper()`, `McciAdkLib_CharIsWhite()`, and `McciAdkLib_CharToLower()` duplicate some of the functions of `<ctype.h>`. They're justified because they avoid Unicode and other portability distractions in embedded systems with small memory.
+
+- `McciAdkLib_SafeCopyString()` copies a string into a buffer starting at a given offset, with bounds checking to prevent overflow.
 
 - `McciAdkLib_StringCompareCaseInsensitive()` compares two ASCII strings without considering case, and also without internationalization considerations.
 
@@ -148,7 +150,7 @@ This header file provides a number of portable APIs for use by ADK clients.
 - `McciAdkLib_Snprintf()` and `McciAdkLib_Vsnprintf()` are like `snprintf()` and `vsnprintf()` from `<stdio.h>`, but:
 
    1. You don't need `<stdio.h>` in scope to use them.
-   2. They behave differently on buffer overflow. They always return the actual length of the string written to buffer, without the trailing `\0', not the length that might have been written.
+   2. They behave differently on buffer overflow. They always return the actual length of the string written to buffer, without the trailing `\0`, not the length that might have been written.
    3. They allow you to easily index into the output buffer.
 
 ## Targeted platforms

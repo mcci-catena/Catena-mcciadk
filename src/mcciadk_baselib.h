@@ -55,7 +55,7 @@ McciAdkLib_BufferToUint32(
 		}
 	else
 		{
-		// this code is only used on plagfroms where unsigned long is a different
+		// this code is only used on platforms where unsigned long is a different
 		// size than uint32_t.
 		unsigned long nonce;
 		bool fOverflow;

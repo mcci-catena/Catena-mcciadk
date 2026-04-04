@@ -25,7 +25,7 @@ Author:
 #define MCCIADK_VERSION_CALC(major, minor, patch, local)	\
 	(((major) << 24u) | ((minor) << 16u) | ((patch) << 8u) | (local))
 
-#define	MCCIADK_VERSION	MCCIADK_VERSION_CALC(0, 2, 2, 0)	/* v0.2.2.0 */
+#define	MCCIADK_VERSION	MCCIADK_VERSION_CALC(0, 2, 3, 1)	/* v0.2.3-pre1 */
 
 #define	MCCIADK_VERSION_GET_MAJOR(v)	\
 	(((v) >> 24u) & 0xFFu)
@@ -88,7 +88,7 @@ Definition:
 		);
 
 Description:
-	This macro, if used where an external reference declarataion is
+	This macro, if used where an external reference declaration is
 	permitted, will either compile cleanly, or will cause a compilation
 	error. The results of using this macro where a declaration is not
 	permitted are unspecified.
@@ -110,7 +110,7 @@ Returns:
 
 /****************************************************************************\
 |
-|	Define the begin/end declaration tags for C++ co-existance
+|	Define the begin/end declaration tags for C++ co-existence
 |
 \****************************************************************************/
 
@@ -157,7 +157,7 @@ Description:
 
 	void anyfunction(
 		SOMETYPE a
-		}
+		)
 		{
 		// declarations
 		int b;
