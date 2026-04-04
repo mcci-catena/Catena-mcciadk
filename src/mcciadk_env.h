@@ -25,7 +25,7 @@ Author:
 #define MCCIADK_VERSION_CALC(major, minor, patch, local)	\
 	(((major) << 24u) | ((minor) << 16u) | ((patch) << 8u) | (local))
 
-#define	MCCIADK_VERSION	MCCIADK_VERSION_CALC(0, 2, 3, 1)	/* v0.2.3-pre1 */
+#define	MCCIADK_VERSION	MCCIADK_VERSION_CALC(0, 3, 0, 1)	/* v0.3.0-pre1 */
 
 #define	MCCIADK_VERSION_GET_MAJOR(v)	\
 	(((v) >> 24u) & 0xFFu)
@@ -38,6 +38,30 @@ Author:
 
 #define	MCCIADK_VERSION_GET_LOCAL(v)	\
 	((v) & 0xFFu)
+
+/// \brief convert a semantic version to an ordinal integer.
+#define	MCCIADK_VERSION_TO_ORDINAL(v)	\
+	(((v) & 0xFFFFFF00u) | (((v) - 1) & 0xFFu))
+
+/// \brief compare two semantic versions
+/// \return \c true if \p a is less than \p b (as a semantic version).
+#define	MCCIADK_VERSION_COMPARE_LT(a, b)	\
+	(MCCIADK_VERSION_TO_ORDINAL(a) < MCCIADK_VERSION_TO_ORDINAL(b))
+
+/// \brief compare two semantic versions
+/// \return \c true if \p a is less than or equal to \p b (as a semantic version).
+#define	MCCIADK_VERSION_COMPARE_LE(a, b)	\
+	(MCCIADK_VERSION_TO_ORDINAL(a) <= MCCIADK_VERSION_TO_ORDINAL(b))
+
+/// \brief compare two semantic versions
+/// \return \c true if \p a is greater than \p b (as a semantic version).
+#define	MCCIADK_VERSION_COMPARE_GT(a, b)	\
+	(MCCIADK_VERSION_TO_ORDINAL(a) > MCCIADK_VERSION_TO_ORDINAL(b))
+
+/// \brief compare two semantic versions
+/// \return \c true if \p a is greater than or equal to \p b (as a semantic version).
+#define	MCCIADK_VERSION_COMPARE_GE(a, b)	\
+	(MCCIADK_VERSION_TO_ORDINAL(a) >= MCCIADK_VERSION_TO_ORDINAL(b))
 
 /****************************************************************************\
 |
