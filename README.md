@@ -59,11 +59,12 @@ This header file sets up a common compile-time environment.
 ### Library versions
 
 - `MCCIADK_VERSION` is the current library version, as computed by `MCCIADK_VERSION_CALC()`
-- `MCCIADK_VERSION_CALC(major, minor, patch, local)` calculates a 32-bit integer based on the Semantic Version v2.0 info given by `major`, `minor`, `patch`, and `local`. Each field is an integer in the range 0..255. The integers returned are guaranteed to compare arithmetically in the same order expected by a semantic version comparison.
+- `MCCIADK_VERSION_CALC(major, minor, patch, local)` calculates a 32-bit integer based on the Semantic Version v2.0 info given by `major`, `minor`, `patch`, and `local`. Each field is an integer in the range 0..255. By convention, `local == 0` denotes a release version and `local > 0` denotes a pre-release. Use the `MCCIADK_VERSION_COMPARE_*` macros (below) for correct semantic version ordering.
 - `MCCIADK_VERSION_GET_MAJOR(version)` returns the major number field of `version`.
 - `MCCIADK_VERSION_GET_MINOR(version)` returns the minor number field of `version`.
 - `MCCIADK_VERSION_GET_PATCH(version)` returns the patch number field of `version`.
 - `MCCIADK_VERSION_GET_LOCAL(version)` returns the local number field of `version`.
+- `MCCIADK_VERSION_COMPARE_LT(a, b)`, `MCCIADK_VERSION_COMPARE_LE(a, b)`, `MCCIADK_VERSION_COMPARE_GT(a, b)`, and `MCCIADK_VERSION_COMPARE_GE(a, b)` compare two version values with correct semantic version ordering, where pre-release versions (`local > 0`) sort before the corresponding release (`local == 0`). These use `MCCIADK_VERSION_TO_ORDINAL()` internally.
 
 ### Compile-time text manipulation
 
@@ -160,6 +161,8 @@ This library is intended for systems with 32-bit or wider architecture. It might
 MCCI uses this library regularly on ARM Cortex M0 platforms. Two of these platforms are covered by the Travis CI tests (Microchip SAMD21, and STM32L0). In addition, some users of the MCCI LoRaWAN software use ESP32, so we do CI testing with ESP32. MCCI doesn't regularly use the code on that platform, however.
 
 ## Release History
+
+- v0.3.0 adds semantic version comparison macros (`MCCIADK_VERSION_COMPARE_LT()`, `_LE`, `_GT`, `_GE`) so that pre-release versions (`local > 0`) correctly sort before the corresponding release (`local == 0`). Also fixes typos in source headers and README, adds missing `McciAdkLib_CharIsDigit()` and `McciAdkLib_SafeCopyString()` to README documentation, and fixes a proprietary copyright block in `mcciadk_guid.h` (issues [#28](https://github.com/mcci-catena/Catena-mcciadk/issues/28), [#30](https://github.com/mcci-catena/Catena-mcciadk/issues/30)).
 
 - v0.2.2 is a minor release. It has improvements for ESP32 compilation, and improves CI testing.
 
