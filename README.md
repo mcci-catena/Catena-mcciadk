@@ -158,9 +158,11 @@ This header file provides a number of portable APIs for use by ADK clients.
 
 This library is intended for systems with 32-bit or wider architecture. It might work with AVR32 systems, but has not been tested or compiled.
 
-MCCI uses this library regularly on ARM Cortex M0 platforms. Two of these platforms are covered by the Travis CI tests (Microchip SAMD21, and STM32L0). In addition, some users of the MCCI LoRaWAN software use ESP32, so we do CI testing with ESP32. MCCI doesn't regularly use the code on that platform, however.
+MCCI uses this library regularly on ARM Cortex M0 platforms. Two of these platforms are covered by the GitHub Actions CI tests (Microchip SAMD21, and STM32L0). In addition, some users of the MCCI LoRaWAN software use ESP32, so we do CI testing with ESP32. MCCI doesn't regularly use the code on that platform, however.
 
 ## Release History
+
+- v0.3.1 fixes bugs in `McciAdkLib_StringCompareCaseInsensitive()` (NULL pointer comparison logic was inverted, [#33](https://github.com/mcci-catena/Catena-mcciadk/issues/33)) and `McciAdkLib_Vsnprintf()` (error path returned wrong value, [#34](https://github.com/mcci-catena/Catena-mcciadk/issues/34)). Updates stale comments in `McciAdkLib_BufferToUlong()`. Fixes `McciAdkLib_MultiSzIndex()` documentation. Converts CI from Travis CI to GitHub Actions ([#39](https://github.com/mcci-catena/Catena-mcciadk/issues/39)).
 
 - v0.3.0 adds semantic version comparison macros (`MCCIADK_VERSION_COMPARE_LT()`, `_LE`, `_GT`, `_GE`) so that pre-release versions (`local > 0`) correctly sort before the corresponding release (`local == 0`). Also fixes typos in source headers and README, adds missing `McciAdkLib_CharIsDigit()` and `McciAdkLib_SafeCopyString()` to README documentation, and fixes a proprietary copyright block in `mcciadk_guid.h` (issues [#28](https://github.com/mcci-catena/Catena-mcciadk/issues/28), [#30](https://github.com/mcci-catena/Catena-mcciadk/issues/30)).
 
