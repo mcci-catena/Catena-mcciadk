@@ -1,5 +1,3 @@
-/* mcciadklib_buffertoulong.c	Wed Mar 22 2017 23:55:01 tmm */
-
 /*
 
 Module:  mcciadklib_buffertoulong.c
@@ -7,27 +5,11 @@ Module:  mcciadklib_buffertoulong.c
 Function:
 	Home for McciAdkLib_BufferToUlong()
 
-Version:
-	V0.1.1	Wed Mar 22 2017 23:55:01 tmm	Edit level 3
-
 Copyright notice:
-	This file copyright (C) 2013, 2017 by
-
-		MCCI Corporation
-		3520 Krums Corners Road
-		Ithaca, NY  14850
-
-	An unpublished work.  All rights reserved.
-
-	This file is proprietary information, and may not be disclosed or
-	copied without the prior permission of MCCI Corporation
+        See accompanying LICENSE file.
 
 Author:
 	ChaeHee Won, MCCI Corporation	October 2013
-
-Revision history:
-   0.1.1  Wed Mar 22 2017 23:55:01  tmm
-	Adapt for MCCI ADK.
 
 */
 

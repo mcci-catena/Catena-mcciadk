@@ -1,5 +1,3 @@
-/* mcciadklib_stringcomparecaseinsensitive.c	Thu Dec 07 2017 00:16:05 tmm */
-
 /*
 
 Module:  mcciadklib_stringcomparecaseinsensitive.c
@@ -7,27 +5,11 @@ Module:  mcciadklib_stringcomparecaseinsensitive.c
 Function:
 	McciAdkLib_StringCompareCaseInsensitive()
 
-Version:
-	V0.1.2	Thu Dec 07 2017 00:16:05 tmm	Edit level 1
-
 Copyright notice:
-	This file copyright (C) 2017 by
-
-		MCCI Corporation
-		3520 Krums Corners Road
-		Ithaca, NY  14850
-
-	An unpublished work.  All rights reserved.
-
-	This file is proprietary information, and may not be disclosed or
-	copied without the prior permission of MCCI Corporation.
+        See accompanying LICENSE file.
 
 Author:
 	Terry Moore, MCCI Corporation	March 2017
-
-Revision history:
-   0.1.2  Thu Dec 07 2017 00:16:05  tmm
-	Module created.
 
 */
 

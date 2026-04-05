@@ -1,5 +1,3 @@
-/* mcciadklib_multiszindex.c	Tue Oct 25 2016 08:42:33 tmm */
-
 /*
 
 Module:  mcciadklib_multiszindex.c
@@ -7,27 +5,11 @@ Module:  mcciadklib_multiszindex.c
 Function:
 	McciAdkLib_MultiSzIndex()
 
-Version:
-	V0.1.0	Tue Oct 25 2016 08:42:33 tmm	Edit level 1
-
 Copyright notice:
-	This file copyright (C) 2016 by
-
-		MCCI Corporation
-		3520 Krums Corners Road
-		Ithaca, NY  14850
-
-	An unpublished work.  All rights reserved.
-
-	This file is proprietary information, and may not be disclosed or
-	copied without the prior permission of MCCI Corporation.
+        See accompanying LICENSE file.
 
 Author:
 	Terry Moore, MCCI Corporation	October 2016
-
-Revision history:
-   0.1.0  Tue Oct 25 2016 08:42:33  tmm
-	Module created.
 
 */
 
