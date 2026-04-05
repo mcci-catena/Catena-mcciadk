@@ -1,5 +1,3 @@
-/* mcciadklib_formatdumpline.c	Thu Mar 23 2017 01:02:45 tmm */
-
 /*
 
 Module:  mcciadklib_formatdumpline.c
@@ -7,27 +5,11 @@ Module:  mcciadklib_formatdumpline.c
 Function:
 	McciAdkLib_FormatDumpLine()
 
-Version:
-	V0.1.1	Thu Mar 23 2017 01:02:45 tmm	Edit level 1
-
 Copyright notice:
-	This file copyright (C) 2017 by
-
-		MCCI Corporation
-		3520 Krums Corners Road
-		Ithaca, NY  14850
-
-	An unpublished work.  All rights reserved.
-
-	This file is proprietary information, and may not be disclosed or
-	copied without the prior permission of MCCI Corporation.
+        See accompanying LICENSE file.
 
 Author:
 	Terry Moore, MCCI Corporation	March 2017
-
-Revision history:
-   0.1.1  Thu Mar 23 2017 01:02:45  tmm
-	Module created.
 
 */
 
