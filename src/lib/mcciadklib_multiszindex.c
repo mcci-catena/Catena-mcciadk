@@ -61,6 +61,9 @@ Returns:
 	Pointer to a non-zero character if uIndex'th string is present, or to
 	the trailing NUL otherwise.
 
+	If the input is a NULL pointer, the result is a pointer to a static
+	empty string. Therefore, the result is never NULL.
+
 */
 
 const char *
@@ -70,6 +73,10 @@ McciAdkLib_MultiSzIndex(
 	)
 	{
 	const char *p;
+	static const char skEmpty[] = "";
+
+	if (pmultiszStrings == NULL)
+		return skEmpty;
 
 	for (p = pmultiszStrings;
 	     *p != 0 && uIndex != 0;
