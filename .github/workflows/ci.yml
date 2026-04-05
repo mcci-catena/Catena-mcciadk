@@ -1,0 +1,104 @@
+##############################################################################
+#
+# File: .github/workflows/ci.yml
+#
+# Function:
+#     GitHub Actions CI for Catena-mcciadk
+#
+# Copyright Notice:
+#     See LICENSE file accompanying this project.
+#
+# Author:
+#     Terry Moore, MCCI Corporation   April 2026
+#
+##############################################################################
+
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    # run weekly on Sundays at 06:07 UTC
+    - cron: '7 6 * * 0'
+
+jobs:
+  build:
+    name: Build (${{ matrix.target }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [samd, stm32, esp32]
+        include:
+          - target: samd
+            fqbn: "mcci:samd:mcci_catena_4450"
+          - target: stm32
+            fqbn: "mcci:stm32:mcci_catena_4551:lorawan_region=us915,opt=osstd,xserial=generic,sysclk=pll32m"
+          - target: esp32
+            fqbn: "esp32:esp32:heltec_wifi_lora_32"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Checkout CI scripts
+        uses: actions/checkout@v6
+        with:
+          repository: mcci-catena/mcci-catena-ci
+          path: mcci-catena-ci
+
+      - name: Install arduino-cli
+        uses: arduino/setup-arduino-cli@v2
+
+      - name: Configure board manager URLs
+        run: |
+          arduino-cli config init
+          arduino-cli config set board_manager.additional_urls \
+            https://github.com/mcci-catena/arduino-boards/raw/master/BoardManagerFiles/package_mcci_index.json \
+            https://adafruit.github.io/arduino-board-index/package_adafruit_index.json \
+            https://dl.espressif.com/dl/package_esp32_index.json
+          arduino-cli core update-index
+
+      - name: Install board package
+        run: |
+          case "${{ matrix.target }}" in
+            samd)   arduino-cli core install mcci:samd ;;
+            stm32)  arduino-cli core install mcci:stm32 ;;
+            esp32)  arduino-cli core install esp32:esp32 ;;
+          esac
+
+      - name: Create test sketches
+        run: |
+          for header in mcciadk_baselib.h mcciadk_env.h mcciadk_guid.h ; do
+            sketch_name="headertest_${header%.h}"
+            mkdir -p "tmp/${sketch_name}"
+            cat > "tmp/${sketch_name}/${sketch_name}.ino" <<EOF
+          #include <${header}>
+          void setup() {}
+          void loop() {}
+          EOF
+          done
+
+      - name: Install library
+        run: |
+          mkdir -p "$HOME/Arduino/libraries"
+          ln -s "$GITHUB_WORKSPACE" "$HOME/Arduino/libraries/Catena-mcciadk"
+
+      - name: Compile test sketches
+        run: |
+          status=0
+          for header in mcciadk_baselib.h mcciadk_env.h mcciadk_guid.h ; do
+            sketch_name="headertest_${header%.h}"
+            echo "::group::Compile ${sketch_name} for ${{ matrix.target }}"
+            if ! arduino-cli compile \
+                --fqbn "${{ matrix.fqbn }}" \
+                "tmp/${sketch_name}" ; then
+              echo "::error::Failed to compile ${sketch_name} for ${{ matrix.target }}"
+              status=1
+            fi
+            echo "::endgroup::"
+          done
+          exit $status
