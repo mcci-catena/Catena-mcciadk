@@ -10,12 +10,36 @@ Catena-mcciadk is the MCCI Arduino Development Kit (ADK), a port of the MCCI XDK
 
 This is an Arduino library -- there is no standalone build system. It builds via the Arduino IDE/CLI as part of projects that depend on it.
 
-**CI (Travis CI)** compiles header-inclusion tests against three targets:
+**CI (GitHub Actions)** compiles header-inclusion tests against three targets:
 - MCCI SAMD (Catena 4450)
 - MCCI STM32L0 (Catena 4551)
 - ESP32 (Heltec WiFi LoRa 32)
 
-To replicate CI locally, use `arduino --verify` with the appropriate board options (see `.travis.yml` for exact board strings and BSP URLs).
+To replicate CI locally with `arduino-cli`:
+
+1. Install board packages (one-time setup):
+   ```
+   arduino-cli config set board_manager.additional_urls \
+     https://github.com/mcci-catena/arduino-boards/raw/master/BoardManagerFiles/package_mcci_index.json \
+     https://adafruit.github.io/arduino-board-index/package_adafruit_index.json \
+     https://dl.espressif.com/dl/package_esp32_index.json
+   arduino-cli core update-index
+   arduino-cli core install mcci:samd mcci:stm32 esp32:esp32
+   ```
+
+2. Create a test sketch for each header (`mcciadk_baselib.h`, `mcciadk_env.h`, `mcciadk_guid.h`):
+   ```
+   mkdir -p /tmp/headertest_mcciadk_baselib
+   echo -e '#include <mcciadk_baselib.h>\nvoid setup() {}\nvoid loop() {}' \
+     > /tmp/headertest_mcciadk_baselib/headertest_mcciadk_baselib.ino
+   ```
+
+3. Compile against each target:
+   ```
+   arduino-cli compile --fqbn mcci:samd:mcci_catena_4450 /tmp/headertest_mcciadk_baselib
+   arduino-cli compile --fqbn "mcci:stm32:mcci_catena_4551:lorawan_region=us915,opt=osstd,xserial=generic,sysclk=pll32m" /tmp/headertest_mcciadk_baselib
+   arduino-cli compile --fqbn esp32:esp32:heltec_wifi_lora_32 /tmp/headertest_mcciadk_baselib
+   ```
 
 There are no unit tests beyond compile-time header verification.
 
