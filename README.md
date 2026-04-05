@@ -2,7 +2,7 @@
 
 This repository contains the MCCI&reg; ADK, a version of the MCCI XDK adapted for use on Catena&reg;-like Arduinos by [MCCI Corporation](http://www.mcci.com).
 
-[![GitHub release](https://img.shields.io/github/release/mcci-catena/Catena-mcciadk.svg)](https://github.com/mcci-catena/Catena-mcciadk/releases/latest) [![GitHub commits](https://img.shields.io/github/commits-since/mcci-catena/Catena-mcciadk/latest.svg)](https://github.com/mcci-catena/Catena-mcciadk/compare/v0.3.0...master)
+[![GitHub release](https://img.shields.io/github/release/mcci-catena/Catena-mcciadk.svg)](https://github.com/mcci-catena/Catena-mcciadk/releases/latest) [![GitHub commits](https://img.shields.io/github/commits-since/mcci-catena/Catena-mcciadk/latest.svg)](https://github.com/mcci-catena/Catena-mcciadk/compare/v0.3.2...master)
 [![CI](https://github.com/mcci-catena/Catena-mcciadk/actions/workflows/ci.yml/badge.svg)](https://github.com/mcci-catena/Catena-mcciadk/actions/workflows/ci.yml)
 
 **Contents:**
@@ -161,6 +161,8 @@ This library is intended for systems with 32-bit or wider architecture. It might
 MCCI uses this library regularly on ARM Cortex M0 platforms. Two of these platforms are covered by the GitHub Actions CI tests (Microchip SAMD21, and STM32L0). In addition, some users of the MCCI LoRaWAN software use ESP32, so we do CI testing with ESP32. MCCI doesn't regularly use the code on that platform, however.
 
 ## Release History
+
+- v0.3.2 makes `McciAdkLib_MultiSzIndex()` a total function of its inputs, returning a pointer to a static empty string when called with a NULL pointer ([#43](https://github.com/mcci-catena/Catena-mcciadk/issues/43)). Replaces old proprietary copyright front matter in C source files with MIT license reference ([#44](https://github.com/mcci-catena/Catena-mcciadk/issues/44)). Updates LICENSE copyright year range to 2016-2026.
 
 - v0.3.1 fixes bugs in `McciAdkLib_StringCompareCaseInsensitive()` (NULL pointer comparison logic was inverted, [#33](https://github.com/mcci-catena/Catena-mcciadk/issues/33)) and `McciAdkLib_Vsnprintf()` (error path returned wrong value, [#34](https://github.com/mcci-catena/Catena-mcciadk/issues/34)). Updates stale comments in `McciAdkLib_BufferToUlong()`. Fixes `McciAdkLib_MultiSzIndex()` documentation. Converts CI from Travis CI to GitHub Actions ([#39](https://github.com/mcci-catena/Catena-mcciadk/issues/39)).
 
