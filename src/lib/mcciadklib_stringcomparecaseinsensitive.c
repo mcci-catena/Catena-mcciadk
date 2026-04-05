@@ -65,7 +65,7 @@ McciAdkLib_StringCompareCaseInsensitive(
         )
         {
         if (pLeft == NULL)
-                return pRight ? 0 : -1;
+                return pRight ? -1 : 0;
 
         if (pRight == NULL)
                 return 1;
