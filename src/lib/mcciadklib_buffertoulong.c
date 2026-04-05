@@ -151,7 +151,14 @@ Notes:
 	The input string must be UTF-8, latin1, ANSI, or a similar character
 	set that maps to ANSI.
 
-	There is no overflow checking.
+	Overflow of the magnitude (before negation) is detected: all
+	valid digits are consumed, ULONG_MAX is stored, and *pfOverflow
+	is set true.
+
+	Negation is done as unsigned arithmetic (0 - ulnum), which is
+	always exact in modular arithmetic.  No overflow is possible on
+	the negation path, because every value in [0, ULONG_MAX] maps
+	to a representable value in the same range.
 
 	It is odd to support negation for an unsigned number input.
 
