@@ -144,7 +144,7 @@ This header file provides a number of portable APIs for use by ADK clients.
        ;
    ```
 
-   Then, `McciAdkLib_MultiSzIndex(my_list, 0)` will return a pointer to `"one"`, `McciAdkLib_MultiSzIndex(my_list, 1)` will return `"two"`, and `McciAdkLib_MultiSzIndex(my_list, 2)` will return `"three"`. Other indices will return `nullptr`.
+   Then, `McciAdkLib_MultiSzIndex(my_list, 0)` will return a pointer to `"one"`, `McciAdkLib_MultiSzIndex(my_list, 1)` will return `"two"`, and `McciAdkLib_MultiSzIndex(my_list, 2)` will return `"three"`. For out-of-range indices, the result points to an empty string (the trailing NUL).
 
 - `McciAdkLib_FormatDumpLine()` prepares one line of a classic "memory dump" string in a buffer, with pointer, hex values, and equivalent printable values.
 
