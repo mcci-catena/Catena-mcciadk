@@ -100,14 +100,20 @@ Definition:
 Description:
 	These functions call snprintf() so that the resulting string is
 	formatted starting at offset iOutbuf in the buffer at pOutbuf,
-	ensuring that writes never go outsize pOutbuf + [0..nOutbuf-1],
+	ensuring that writes never go outside pOutbuf + [0..nOutbuf-1],
 	and ensuring that the resulting string is nul-terminated. (This
 	means that the actual length can never be more than nOutbuf-1,
 	as pOutbuf[nOutbuf - 1] will be forced to be the terminator if
 	needed.)
 
+	If iOutbuf >= nOutbuf or pOutbuf is NULL, nothing is written
+	and 0 is returned.
+
 Returns:
-	The resulting index.
+	The number of characters appended to the buffer, excluding the
+	trailing '\0' (which is always written when output is possible).
+	The result is always in the range
+	0 <= result <= (iOutbuf >= nOutbuf ? 0 : nOutbuf - iOutbuf - 1).
 
 */
 
@@ -142,7 +148,7 @@ McciAdkLib_Vsnprintf(
 	size_t nSprintf;
 
 	if (iOutbuf >= nOutbuf || pOutbuf == NULL)
-		return nOutbuf;
+		return 0;
 
 	nSprintf = vsnprintf(
 			pOutbuf + iOutbuf,
