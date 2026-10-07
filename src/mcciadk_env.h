@@ -39,6 +39,10 @@ Author:
 #define	MCCIADK_VERSION_GET_LOCAL(v)	\
 	((v) & 0xFFu)
 
+/// \brief the pre-release number: another name for the local field.
+#define	MCCIADK_VERSION_GET_PRERELEASE(v)	\
+	MCCIADK_VERSION_GET_LOCAL(v)
+
 /// \brief convert a semantic version to an ordinal integer.
 #define	MCCIADK_VERSION_TO_ORDINAL(v)	\
 	(((v) & 0xFFFFFF00u) | (((v) - 1) & 0xFFu))

@@ -64,6 +64,7 @@ This header file sets up a common compile-time environment.
 - `MCCIADK_VERSION_GET_MINOR(version)` returns the minor number field of `version`.
 - `MCCIADK_VERSION_GET_PATCH(version)` returns the patch number field of `version`.
 - `MCCIADK_VERSION_GET_LOCAL(version)` returns the local number field of `version`.
+- `MCCIADK_VERSION_GET_PRERELEASE(version)` is another name for `MCCIADK_VERSION_GET_LOCAL()`: the pre-release number, or 0 for a release.
 - `MCCIADK_VERSION_COMPARE_LT(a, b)`, `MCCIADK_VERSION_COMPARE_LE(a, b)`, `MCCIADK_VERSION_COMPARE_GT(a, b)`, and `MCCIADK_VERSION_COMPARE_GE(a, b)` compare two version values with correct semantic version ordering, where pre-release versions (`local > 0`) sort before the corresponding release (`local == 0`). These use `MCCIADK_VERSION_TO_ORDINAL()` internally.
 
 ### Compile-time text manipulation
@@ -145,6 +146,8 @@ This header file provides a number of portable APIs for use by ADK clients.
    ```
 
    Then, `McciAdkLib_MultiSzIndex(my_list, 0)` will return a pointer to `"one"`, `McciAdkLib_MultiSzIndex(my_list, 1)` will return `"two"`, and `McciAdkLib_MultiSzIndex(my_list, 2)` will return `"three"`. For out-of-range indices, the result points to an empty string (the trailing NUL).
+
+- `McciAdkLib_FormatVersion()` formats a version from `MCCIADK_VERSION_CALC()` as text, starting at an offset in a buffer: `x.y.z` for a release, `x.y.z-preN` for a pre-release (for example `7.0.0-pre5`). `MCCIADKLIB_FORMAT_VERSION_BUFFER_SIZE` is the buffer size needed for the longest string, including the trailing `'\0'`. Like `McciAdkLib_Snprintf()`, it never writes past the buffer, always leaves it nul-terminated, and returns the number of characters written.
 
 - `McciAdkLib_FormatDumpLine()` prepares one line of a classic "memory dump" string in a buffer, with pointer, hex values, and equivalent printable values.
 

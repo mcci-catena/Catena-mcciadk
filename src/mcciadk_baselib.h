@@ -164,6 +164,19 @@ McciAdkLib_FormatDumpLine(
 	size_t nBuffer
 	);
 
+// the buffer size needed for the longest version string, "###.###.###-pre###",
+// including the trailing '\0'.
+#define	MCCIADKLIB_FORMAT_VERSION_BUFFER_SIZE	((4 * 3) + 3 + 3 + 1)
+
+// format an MCCIADK_VERSION_CALC() value as "x.y.z" or "x.y.z-preP".
+size_t
+McciAdkLib_FormatVersion(
+	char *pBuffer,
+	size_t nBuffer,
+	size_t iBuffer,
+	uint32_t version
+	);
+
 // index into a string of null-terminated strings, terminated by a double-null.
 const char *
 McciAdkLib_MultiSzIndex(
