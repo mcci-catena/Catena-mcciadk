@@ -25,7 +25,7 @@ Author:
 #define MCCIADK_VERSION_CALC(major, minor, patch, local)	\
 	(((major) << 24u) | ((minor) << 16u) | ((patch) << 8u) | (local))
 
-#define	MCCIADK_VERSION	MCCIADK_VERSION_CALC(1, 0, 0, 0)	/* v1.0.0 */
+#define	MCCIADK_VERSION	MCCIADK_VERSION_CALC(1, 1, 0, 1)	/* v1.1.0-pre1 */
 
 #define	MCCIADK_VERSION_GET_MAJOR(v)	\
 	(((v) >> 24u) & 0xFFu)
@@ -38,6 +38,10 @@ Author:
 
 #define	MCCIADK_VERSION_GET_LOCAL(v)	\
 	((v) & 0xFFu)
+
+/// \brief the pre-release number: another name for the local field.
+#define	MCCIADK_VERSION_GET_PRERELEASE(v)	\
+	MCCIADK_VERSION_GET_LOCAL(v)
 
 /// \brief convert a semantic version to an ordinal integer.
 #define	MCCIADK_VERSION_TO_ORDINAL(v)	\
